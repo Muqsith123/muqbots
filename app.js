@@ -35,7 +35,7 @@ for (const file of commandFiles) {
 const cooldowns = new Discord.Collection();
 
 client.on("ready", () => {
-  console.log("Muqsith Aku Siap !");
+  console.log("Aktif!");
 });
 
 
