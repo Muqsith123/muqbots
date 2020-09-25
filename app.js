@@ -141,7 +141,7 @@ client.on('ready', () => {
     const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
     client.user.setActivity(activities_list[index], {
     type: "STREAMING",
-    url: "url: 'https://www.twitch.tv/duar'"
+    url: 'https://www.twitch.tv/duar'
     
     })
   }, 5000);
