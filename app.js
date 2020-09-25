@@ -6,8 +6,6 @@ const {
   a2,
   a3
 } = require("./config.json");//hal hal yang di perlukan
-const ytdl = require('ytdl-core');//yt ke bot
-const queue = new Map();//membuat map musik
 const fs = require('fs');
 
 
@@ -128,23 +126,12 @@ if (!cooldowns.has(command.name)) {
 
 //status bot
 
-
-const activities_list = [
-    "DAFI KENTOD !", 
-    "DAFI ASU !",
-    "DAFI BABI !"
-    ];
-
 client.on('ready', () => {
-  setInterval(() => {
-    const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
-    client.user.setActivity(activities_list[index], {
-    type: "STREAMING",
-    url: 'https://www.twitch.tv/duar'
+    client.user.setActivity("MANTENGIN ELU !", {
+    type: "WATCHING",
     
     })
-  }, 5000);
-})
+  })
 
 
 client.login(process.env.TOKEN1)
