@@ -140,7 +140,8 @@ client.on('ready', () => {
   setInterval(() => {
     const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
     client.user.setActivity(activities_list[index], {
-    type: "WATCHING"
+    type: "STREAMING",
+    url: "url: 'https://www.twitch.tv/duar'"
     
     })
   }, 5000);
