@@ -130,16 +130,15 @@ if (!cooldowns.has(command.name)) {
 
 
 const activities_list = [
-    "Mantengin Elu !.", 
-    "-help",
-    "RETR0 KENTANG", 
-    "BETA"
+    "DAFI KENTOD !", 
+    "DAFI ASU !",
+    "DAFI BABI !"
     ];
 
 client.on('ready', () => {
   setInterval(() => {
     const index = Math.floor(Math.random() * (activities_list.length - 1) + 1);
-    client.user.setActivity("DAFI KENTOD !", {
+    client.user.setActivity(activities_list[index], {
     type: "STREAMING",
     url: 'https://www.twitch.tv/duar'
     
