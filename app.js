@@ -1,5 +1,5 @@
-const Discord = require("discord.js");
-const client = new Discord.Client(); //memanggil discord.js
+const Discord = require("discord.js");	//memanggil discord.js
+const client = new Discord.Client(); 
 const {
   prefix,
   a1,
@@ -94,27 +94,23 @@ if (!cooldowns.has(command.name)) {
 		message.channel.send(`<@710492761303941150> Waduh Commandnya Error !`)
 	}
   
-  
-  //music anjing
-   const serverQueue = queue.get(message.guild.id);
-     if (command === "sing2") { //music2
-		if (message.channel.type === 'dm') return;
-
-		const voiceChannel = message.member.voice.channel;
-
-		if (!voiceChannel) {
-			return message.reply('please join a voice channel first!');
-		}
-
-		voiceChannel.join().then(connection => {
-			const stream = ytdl(a2, { filter: 'audioonly' });
-			const dispatcher = connection.play(stream);
-
-			dispatcher.on('finish', () => voiceChannel.leave());
-		});
+}); client.on("message", async message => {
+	if (message.content === '-ping') {
+	const m = await message.channel.send('Mendapatkan Info ...')
+        
+        const aembed = new Discord.MessageEmbed()
+        .setTitle("🏓 PONG!")
+        .addField("Roundtrip took", (`${m.createdTimestamp - message.createdTimestamp}ms`), true)
+        .addField("Hearthbeat", (`${Math.round(client.ws.ping)}ms​`), true)
+        .setColor('#00f1ff')
+        .setFooter("BOT By FrenzyQrunch")
+        return setTimeout(function(){ 
+      m.edit("Sukses Mendapatkan Info !", aembed)
+      }, 3000);
 	}
-});
 
+})
+  
 
 
 
