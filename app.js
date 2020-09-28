@@ -117,7 +117,7 @@ if (!cooldowns.has(command.name)) {
     hasil = Math.floor(Math.random() * 99999 + 1)
   }  
 
-  function generateimg() {
+  async function generateimg() {
   const canvas = Canvas.createCanvas(1280, 720);
   const ctx = canvas.getContext('2d');
   const background = await Canvas.loadImage('./sc/background/back1.jpg');
