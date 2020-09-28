@@ -9,7 +9,7 @@ const {
 const fs = require('fs');
 const Canvas = require('canvas');
 
-Canvas.registerFont('sc/font.ttf', {family: 'fontFamily'});
+Canvas.registerFont('./sc/font.ttf', {family: 'fontFamily'});
 
 //event handler
 fs.readdir("./events/", (err, files) => {
@@ -110,18 +110,18 @@ if (!cooldowns.has(command.name)) {
       m.edit("Sukses Mendapatkan Info !", aembed)
       }, 3000);
   }
- if (message.content === '-start' && message.member.roles.cache.get('752793011435339776')) {
+ else if (message.content === '-start' && message.member.roles.cache.get('752793011435339776')) {
   let hasil;
   let canvass;
   function randoming()  {
     hasil = Math.floor(Math.random() * 99999 + 1)
+    message.channel.send(`${hasil}`)
   }  
 
   async function generateimg() {
   const canvas = Canvas.createCanvas(1280, 720);
   const ctx = canvas.getContext('2d');
   const background = await Canvas.loadImage('./sc/background/back1.jpg');
-  const putih = ("#ffffff") 
   
   ctx.drawImage(background, 0, 0, 1280, 720);
   ctx.strokeStyle = '#000000';
@@ -129,16 +129,13 @@ if (!cooldowns.has(command.name)) {
   
   ctx.font = '35px fontFamily';
   ctx.shadowBlur = 10;
-	ctx.fillStyle = '#000000';
+	ctx.fillStyle = '#ffffff';
 	ctx.shadowColor = "#000000";
   ctx.shadowOffs = 0;
-  ctx.fillText(`${hasil}`, canvas.width / 1.0, canvas.height / 1.0);
+  ctx.fillText(`${hasil}`, canvas.width / 1.0, canvas.height / 3.0);
   
-  canvass = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.jpg');
+  canvass = new Discord.MessageAttachment(canvas.toBuffer(), 'weh.jpg')
   message.channel.send(`Masukkan Plat Nomer Ini Sebelum Mobil Itu Menghilang !`, canvass)
-  .then(msg => {
-    msg.delete({ timeout: 15000 })
-  }) 
 }
     setInterval(() => {
       message.channel.send('<:hmm:748069977239715942> Mencari Plat Nomer Mobil Target !')
@@ -146,7 +143,7 @@ if (!cooldowns.has(command.name)) {
         msg.delete({ timeout: 10000 })
       })
       setTimeout(function(){
-        randoming();  
+        randoming();
         generateimg();
         setTimeout(function(){
           hasil = null;
@@ -157,8 +154,7 @@ if (!cooldowns.has(command.name)) {
       client.on("message", message => {
       if (message.content === `${hasil}` && !message.author.bot) {
         message.channel.send('Berhasil !')
-      } else if (message.content === '-aktual')
-        message.channel.send(`${hasil}`)
+      }
     })
       
     
