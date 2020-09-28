@@ -135,7 +135,11 @@ if (!cooldowns.has(command.name)) {
   ctx.fillText(`${hasil}`, canvas.width / 15.0, canvas.height / 15.0);
   
   canvass = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.jpg');
-  }
+  message.channel.send(`Masukkan Plat Nomer Ini Sebelum Mobil Itu Menghilang !`, canvass)
+  .then(msg => {
+    msg.delete({ timeout: 15000 })
+  }) 
+}
     setInterval(() => {
       message.channel.send('<:hmm:748069977239715942> Mencari Plat Nomer Mobil Target !')
       .then(msg => {
@@ -144,10 +148,6 @@ if (!cooldowns.has(command.name)) {
       setTimeout(function(){
         randoming();  
         generateimg();
-        message.channel.send(`Masukkan Plat Nomer Ini Sebelum Mobil Itu Menghilang !`, canvass)
-        .then(msg => {
-          msg.delete({ timeout: 15000 })
-        }) 
         setTimeout(function(){
           hasil = null;
         }, 15000)
