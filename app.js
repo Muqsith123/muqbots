@@ -126,10 +126,10 @@ if (!cooldowns.has(command.name)) {
   
   ctx.font = '35px fontFamily';
   ctx.shadowBlur = 10;
-	ctx.fillStyle = '#ffffff';
+	ctx.fillStyle = '#000000';
 	ctx.shadowColor = "#000000";
   ctx.shadowOffs = 0;
-  ctx.fillText(`${hasil}`, canvas.width / 6.0, canvas.height / 6.0);
+  ctx.fillText(`${hasil}`, canvas.width / 15.0, canvas.height / 15.0);
   
   canvass = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.jpg');
   }  
@@ -142,13 +142,13 @@ if (!cooldowns.has(command.name)) {
         randoming();  
         message.channel.send(`Masukkan Plat Nomer Ini Sebelum Mobil Itu Menghilang !`, canvass)
         .then(msg => {
-          msg.delete({ timeout: 8000 })
+          msg.delete({ timeout: 15000 })
         }) 
         setTimeout(function(){
           hasil = null;
-        }, 6500)
+        }, 15000)
       }, 10000)
-    }, 18000)
+    }, 25000)
       
       client.on("message", message => {
       if (message.content === `${hasil}` && !message.author.bot) {
