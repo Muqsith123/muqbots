@@ -132,7 +132,7 @@ if (!cooldowns.has(command.name)) {
 	ctx.fillStyle = '#000000';
 	ctx.shadowColor = "#000000";
   ctx.shadowOffs = 0;
-  ctx.fillText(`${hasil}`, canvas.width / 0.0, canvas.height / 0.0);
+  ctx.fillText(`${hasil}`, canvas.width / 1.0, canvas.height / 1.0);
   
   canvass = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.jpg');
   message.channel.send(`Masukkan Plat Nomer Ini Sebelum Mobil Itu Menghilang !`, canvass)
