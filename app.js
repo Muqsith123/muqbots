@@ -157,7 +157,8 @@ if (!cooldowns.has(command.name)) {
       client.on("message", message => {
       if (message.content === `${hasil}` && !message.author.bot) {
         message.channel.send('Berhasil !')
-      } 
+      } else if (message.content === '-aktual')
+        message.channel.send(`${hasil}`)
     })
       
     
