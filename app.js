@@ -7,7 +7,9 @@ const {
   a3
 } = require("./config.json");//hal hal yang di perlukan
 const fs = require('fs');
+const Canvas = require('canvas');
 
+Canvas.registerFont('sc/font.ttf', {family: 'fontFamily'});
 
 //event handler
 fs.readdir("./events/", (err, files) => {
@@ -107,7 +109,61 @@ if (!cooldowns.has(command.name)) {
         return setTimeout(function(){ 
       m.edit("Sukses Mendapatkan Info !", aembed)
       }, 3000);
-	}
+  }
+ if (message.content === '-start' && message.member.roles.cache.get('752793011435339776')) {
+  let hasil;
+  let canvass;
+  async function randoming()  {
+    hasil = Math.floor(Math.random() * 99999 + 1)
+    const canvas = Canvas.createCanvas(1280, 720);
+  const ctx = canvas.getContext('2d');
+  const background = await Canvas.loadImage('./sc/background/back1.jpg');
+  const putih = ("#ffffff") 
+  
+  ctx.drawImage(background, 0, 0, 1280, 720);
+  ctx.strokeStyle = '#000000';
+  ctx.strokeRect(0, 0, 1280, 720);
+  
+  ctx.save();
+  ctx.fillStyle = "#000000(255, 255, 255, 0.5)";
+  ctx.globalAlpha = 0.5;
+  ctx.fillRect(15, 15, 825, 345);
+  ctx.restore();
+  
+  ctx.font = '35px fontFamily';
+  ctx.shadowBlur = 10;
+	ctx.fillStyle = '#ffffff';
+	ctx.shadowColor = "#000000";
+  ctx.shadowOffs = 0;
+  ctx.fillText(`${hasil}`, canvas.width / 3.0, canvas.height / 3.0);
+  
+  canvass = new Discord.MessageAttachment(canvas.toBuffer(), 'welcome-image.jpg');
+  }  
+    setInterval(() => {
+      message.channel.send('<:hmm:748069977239715942> Mencari Plat Nomer Mobil Target !')
+      .then(msg => {
+        msg.delete({ timeout: 10000 })
+      })
+      setTimeout(function(){
+        randoming();  
+        message.channel.send(`Masukkan Plat Nomer Ini Sebelum Mobil Itu Menghilang !`, canvass)
+        .then(msg => {
+          msg.delete({ timeout: 6500 })
+        }) 
+        setTimeout(function(){
+          hasil = null;
+        }, 6500)
+      }, 10000)
+    }, 16500)
+      
+      client.on("message", message => {
+      if (message.content === `${hasil}` && !message.author.bot) {
+        message.channel.send('Berhasil !')
+      } 
+    })
+      
+    
+  } 
 
 })
   
