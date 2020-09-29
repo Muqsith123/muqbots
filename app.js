@@ -111,12 +111,14 @@ if (!cooldowns.has(command.name)) {
       }, 3000);
   }
  else if (message.content === '-start' && message.member.roles.cache.get('752793011435339776')) {
-  let hasil;
-  let canvass;
+  let hasil, canvass;
+    
   function randoming()  {
     hasil = Math.floor(Math.random() * 99999 + 1)
     message.channel.send(`${hasil}`)
   }  
+
+
 
   async function generateimg() {
   const canvas = Canvas.createCanvas(1280, 720);
@@ -136,20 +138,27 @@ if (!cooldowns.has(command.name)) {
   
   canvass = new Discord.MessageAttachment(canvas.toBuffer(), 'weh.jpg')
   message.channel.send(`Masukkan Plat Nomer Ini Sebelum Mobil Itu Menghilang !`, canvass)
+  /*.then(msg => {
+    msg.delete({ timeout: 8000})
+  })*/
 }
-    setInterval(() => {
+
+
+   setInterval(() => {
       message.channel.send('<:hmm:748069977239715942> Mencari Plat Nomer Mobil Target !')
       .then(msg => {
         msg.delete({ timeout: 10000 })
       })
+
       setTimeout(function(){
         randoming();
         generateimg();
+
         setTimeout(function(){
           hasil = null;
-        }, 15000)
+        }, 8000)
       }, 10000)
-    }, 25000)
+    }, 18000)
       
       client.on("message", message => {
       if (message.content === `${hasil}` && !message.author.bot) {
