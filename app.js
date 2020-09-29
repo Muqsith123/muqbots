@@ -115,7 +115,6 @@ if (!cooldowns.has(command.name)) {
     
   function randoming()  {
     hasil = Math.floor(Math.random() * 99999 + 1)
-    message.channel.send(`${hasil}`)
   }  
 
 
@@ -138,9 +137,9 @@ if (!cooldowns.has(command.name)) {
   
   canvass = new Discord.MessageAttachment(canvas.toBuffer(), 'weh.jpg')
   message.channel.send(`Masukkan Plat Nomer Ini Sebelum Mobil Itu Menghilang !`, canvass)
-  /*.then(msg => {
+  .then(msg => {
     msg.delete({ timeout: 8000})
-  })*/
+  })
 }
 
 
