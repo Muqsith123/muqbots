@@ -36,8 +36,10 @@ module.exports = async (client, message) => {
            var function1 = setInterval(gantinick, 10000);
            client.on("message", message => {
             if (message.content === `${prefix}stop`) {
+                if (message.author.id === '710492761303941150') {
                 message.channel.send('Mencoba Stop Lock Nick !')
                 clearInterval(function1);
+                }
             }
            }) 
         }
