@@ -97,20 +97,8 @@ if (!cooldowns.has(command.name)) {
 	}
   
 }); client.on("message", async message => {
-	if (message.content === '-ping') {
-	const m = await message.channel.send('Mendapatkan Info ...')
-        
-        const aembed = new Discord.MessageEmbed()
-        .setTitle("🏓 PONG!")
-        .addField("Roundtrip took", (`${m.createdTimestamp - message.createdTimestamp}ms`), true)
-        .addField("Hearthbeat", (`${Math.round(client.ws.ping)}ms​`), true)
-        .setColor('#00f1ff')
-        .setFooter("BOT By FrenzyQrunch")
-        return setTimeout(function(){ 
-      m.edit("Sukses Mendapatkan Info !", aembed)
-      }, 3000);
-  }
- else if (message.content === '-start' && message.member.roles.cache.get('752793011435339776')) {
+	
+ if (message.content === '-start' && message.member.roles.cache.get('752793011435339776')) {
   let hasil, canvass;
     
   function randoming()  {
