@@ -2,6 +2,6 @@ module.exports = {
   name:'youcool',
   description: 'Anjay !',
   execute(message) {
-    message.channel.send(`<:pog:754557593443238029>`);
+    message.channel.send(`<a:yuh:748074555976974386>`);
   }
 }
