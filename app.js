@@ -8,6 +8,8 @@ const {
 } = require("./config.json");//hal hal yang di perlukan
 const fs = require('fs');
 const Canvas = require('canvas');
+client.snipes = new Discord.Collection();
+
 
 Canvas.registerFont('./sc/font.ttf', {family: 'fontFamily'});
 
@@ -97,8 +99,12 @@ if (!cooldowns.has(command.name)) {
 	}
   
 }); client.on("message", async message => {
-	
- if (message.content === '-start' && message.member.roles.cache.get('752793011435339776')) {
+	if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+const args = message.content.slice(prefix.length).trim().split(' ');
+const commandwew = args.shift().toLowerCase();
+
+ if (commandwew === 'start' && message.member.roles.cache.get('752793011435339776')) {
   let hasil, canvass;
     
   function randoming()  {
@@ -154,7 +160,20 @@ if (!cooldowns.has(command.name)) {
     })
       
     
-  } 
+  } else if(commandwew === 'snipe') {
+    const snipes = client.snipes.get(message.channel.id) || [];
+    const msg = snipes[args[0] - 1 || 0];
+    if (!msg) return message.channel.send(`That is not a valid snipe...`);
+    const Embed = new Discord.MessageEmbed()
+      .setAuthor(
+        msg.author.tag,
+        msg.author.displayAvatarURL({ dynamic: true, size: 256 })
+      )
+      .setDescription(msg.content)
+      .setFooter(`Date: ${msg.date} | ${args[0] || 1}/${snipes.length}`);
+    if (msg.attachment) Embed.setImage(msg.attachment);
+    message.channel.send(Embed);
+  }
 
 })
   
