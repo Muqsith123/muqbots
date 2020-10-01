@@ -3,13 +3,13 @@ const fetch = require('node-fetch');
 const translate = require("@vitalets/google-translate-api")
 
 module.exports = {
-    name: 'quote',
+    name: 'techquote',
     description: 'Membuat Programmer Menjadi Lebih Semangat',
     execute(message) {
-    fetch("https://api.quotable.io/random")
+        fetch("http://quotes.stormconsultancy.co.uk/random.json")
         .then(response => response.json())
         .then(data => {
-            let quotenya = `"` + data.content.toLocaleString() + `"`
+            let quotenya = `"` + data.quote.toLocaleString() +  `"`
             let author = data.author.toLocaleString()
             
             translate(quotenya, {to: 'id'}).then(res => {
@@ -29,5 +29,5 @@ module.exports = {
         }).catch(e => {
             return message.channel.send('Terjadi Error. Mohon Coba Lagi Nanti !')
         })
-    }
+    } 
 }
