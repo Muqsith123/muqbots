@@ -36,11 +36,6 @@ for (const file of commandFiles) {
   
 const cooldowns = new Discord.Collection();
 
-client.on("ready", () => {
-  console.log(`Selesai Login Sebagai ${client.user.tag} !`);
-});
-
-
           
 client.on("message", async message => {
   
@@ -186,14 +181,7 @@ const commandwew = args.shift().toLowerCase();
   
 
 
-//status bot
 
-client.on('ready', () => {
-    client.user.setActivity("MANTENGIN ELU !", {
-    type: "WATCHING",
-    
-    })
-  })
 
 
 client.login(process.env.TOKEN1)

@@ -6,10 +6,22 @@ module.exports = {
   cooldown: 15,
   guildOnly: true,
 	execute(message) {
+    function toTitleCase(str) {
+      return str.replace(
+        /\w\S*/g,
+        function(txt) {
+          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }
+      );
+    }
+    var lokasi = message.guild.region 
+    var tlokasi = toTitleCase(lokasi);
+
     const embed = new Discord.MessageEmbed()
       .setColor('#00f1ff')
       .setTitle('INFO SERVER')
-      .setDescription(`Nama Server : ${message.guild.name}\nTotal Member : ${message.guild.memberCount}\nLokasi Server : Indonesia`);
+      .setThumbnail(message.guild.iconURL())
+      .setDescription(`Nama Server : ${message.guild.name}\nTotal Member : ${message.guild.memberCount}\nTotal BOT : ${message.guild.members.cache.filter(m => m.user.bot).size}\nLokasi Server : ${tlokasi}`);
     message.channel.send(embed);
     }
 	};

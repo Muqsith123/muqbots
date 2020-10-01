@@ -1,3 +1,4 @@
+const translate = require("@vitalets/google-translate-api");
 const Discord = require('discord.js');
 const { prefix } = require('../config.json');
 
