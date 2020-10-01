@@ -37,7 +37,7 @@ for (const file of commandFiles) {
 const cooldowns = new Discord.Collection();
 
 client.on("ready", () => {
-  console.log("Muqsith Bot Telah Aktif !");
+  console.log(`Selesai Login Sebagai ${client.user.tag} !`);
 });
 
 

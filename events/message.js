@@ -45,5 +45,15 @@ module.exports = async (client, message) => {
             }) 
         }
        }
+    } else if (command === 'info') {
+        const author = client.users.cache.get('710492761303941150')
+        const embed = new Discord.MessageEmbed()
+          .setColor("#00f1ff")
+          .setThumbnail(client.user.displayAvatarURL({size: 512}))
+          .addFields(
+            {name: "INFO OF BOT", value: `Name BOT : ${client.user.tag}\nPrefix : ${prefix}\nAuthor : ${author.username}\n`, inline: false},
+            {name: "Need Help ?", value: 'Use `' + `${prefix}help` + '`' + ' Command !', inline: false}
+        )
+        message.channel.send(embed); 
     }
 }

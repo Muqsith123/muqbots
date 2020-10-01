@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const { prefix } = require('../config.json')
 
 module.exports = {
   name: 'help',
@@ -6,10 +7,11 @@ module.exports = {
   execute(message)  {
       const embed = new Discord.MessageEmbed() 
       .setColor("#00f1ff")
-      .setTitle("This Is List Of The Command !")
+      .setTitle("Ini Daftar Command BOT !")
       .addFields(
-        { name: "Speak", value: "``", inline: false},
-        { name: "Music", value: "`$play, $skip, $stop`", inline: false }
+        { name: "```━━━━━━ FUN  ━━━━━━``` :smile:", value: "```" + `${prefix}quote, ${prefix}techquote,\n${prefix}ascii, ${prefix}youcool, ${prefix}snipe` + "```", inline: false},
+        { name: "```━━━━━━ NEWS ━━━━━━``` :newspaper:", value: "```" + `${prefix}corona, ${prefix}gempa` + "```", inline: false },
+        { name: "```━━━━━━ INFO ━━━━━━``` :information_source:", value: "```" + `${prefix}waktu, ${prefix}help,\n${prefix}server, ${prefix}info` + "```", inline: false}
     )   
       message.channel.send(embed);    
   }
