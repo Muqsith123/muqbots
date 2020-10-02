@@ -4,6 +4,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = {
     name: 'translate',
     description: 'Menerjemahkan Kata !',
+    aliases: ['tsl', 'trans'],
     execute(message, args) {
         args.join(" ");
         let kata = args.join(" ").slice(3);
