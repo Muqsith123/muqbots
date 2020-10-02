@@ -1,7 +1,7 @@
 const Command = require('../../Structures/Command.js');
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
-const { prefix } = require('../../../config.json')
+const { prefix } = require('../../config.json')
 module.exports = class extends Command {
 
 	constructor(...args) {

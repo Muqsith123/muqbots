@@ -15,7 +15,7 @@ module.exports = class extends Event {
             member: '751316106765008987',
             bots: '751316107570446406'
           }
-          
+
           if(member.guild.id !== stats.serverID) return;
               this.client.channels.cache.get(stats.total).setName(`Total Pengguna: ${member.guild.memberCount}`);
               this.client.channels.cache.get(stats.member).setName(`FAM: ${member.guild.members.cache.filter(m => !m.user.bot).size}`);

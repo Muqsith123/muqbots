@@ -1,7 +1,7 @@
 const Command = require('../../Structures/Command.js');
 const Discord = require('discord.js');
 const { post } = require("node-superfetch");
-const { owners } = require('../../../config.json')
+const { owners } = require('../../config.json')
 
 module.exports = class extends Command {
     constructor(...args) {

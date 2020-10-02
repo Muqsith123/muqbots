@@ -1,5 +1,5 @@
 const Event = require('../Structures/Event');
-const { prefix } = require('../../config.json')
+const { prefix } = require('../config.json')
 
 module.exports = class extends Event {
 
