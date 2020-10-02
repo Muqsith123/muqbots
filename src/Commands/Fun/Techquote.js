@@ -1,15 +1,22 @@
+const Command = require('../../Structures/Command.js')
 const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 const translate = require("@vitalets/google-translate-api")
 
-module.exports = {
-    name: 'techquote',
-    description: 'Membuat Programmer Menjadi Lebih Semangat',
-    execute(message) {
-        fetch("http://quotes.stormconsultancy.co.uk/random.json")
-        .then(response => response.json())
-        .then(data => {
-            let quotenya = `"` + data.quote.toLocaleString() +  `"`
+module.exports = class extends Command {
+
+    constructor(...args) {
+        super(...args, {
+          description: 'Membuat Programmer Menjadi Lebih Semangat',
+          aliases: ['tquote', 'techquote'],
+          category: 'Fun'
+        });
+    }
+    async run (message) {
+    fetch("http://quotes.stormconsultancy.co.uk/random.json")
+    .then(response => response.json())
+    .then(data => {
+            let quotenya = `"` + data.quote.toLocaleString() + `"`
             let author = data.author.toLocaleString()
             
             translate(quotenya, {to: 'id'}).then(res => {
@@ -29,5 +36,5 @@ module.exports = {
         }).catch(e => {
             return message.channel.send('Terjadi Error. Mohon Coba Lagi Nanti !')
         })
-    } 
+    }
 }

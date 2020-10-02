@@ -1,14 +1,21 @@
+const Command = require('../../Structures/Command.js')
 const { MessageEmbed } = require('discord.js');
 const fetch = require('node-fetch');
 const translate = require("@vitalets/google-translate-api")
 
-module.exports = {
-    name: 'quote',
-    description: 'Membuat Programmer Menjadi Lebih Semangat',
-    execute(message) {
+module.exports = class extends Command {
+
+    constructor(...args) {
+        super(...args, {
+          aliases: ['katamutiara'],
+          description: 'Membuat Hidup Lebih Semangat :)',
+          category: 'Fun'
+        });
+    }
+    async run (message) {
     fetch("https://api.quotable.io/random")
-        .then(response => response.json())
-        .then(data => {
+    .then(response => response.json())
+    .then(data => {
             let quotenya = `"` + data.content.toLocaleString() + `"`
             let author = data.author.toLocaleString()
             

@@ -1,19 +1,28 @@
+const Command = require('../../Structures/Command.js');
 const fetch = require('node-fetch');
 const Discord = require('discord.js');
+const { prefix } = require('../../../config.json')
+module.exports = class extends Command {
 
-module.exports = {
-  name: 'corona',
-  description: 'info covid-19',
-  cooldown: 15,
-  execute(message, args) {
-    let countries = args.join(" ");
+	constructor(...args) {
+		super(...args, {
+            description: 'Melihat Jumlah Corona Di Indonesia',
+            aliases: ['covid', 'covid19'],
+            category: 'News',
+            usage: '(negara/all)'
+		});
+	}
+
+	// eslint-disable-next-line no-unused-vars
+	async run(message, args) {
+		let countries = args.join(" ");
 
         //Credit to Sarastro#7725 for the command :)
 
         const noArgs = new Discord.MessageEmbed()
         .setTitle('Masukkan Negara Yang Benar !')
         .setColor(0xFF0000)
-        .setDescription('CONTOH : $corona all/$corona indonesia')
+        .setDescription(`CONTOH : ${prefix}corona all/${prefix}corona indonesia`)
         .setTimestamp()
 
         if(!args[0]) return message.channel.send(noArgs);
@@ -55,10 +64,6 @@ module.exports = {
                 return message.channel.send('Masukkan Negara Yang Benar !')
             })
         }
-    
-    
-    
-    
-  }
-  
+	}
+
 };
