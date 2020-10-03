@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 module.exports=(bot)=> {
-    fs.readdir("./events/", (err, files) => {
+    fs.readdir("./Events/", (err, files) => {
         if (err) return console.error(err);
         files.forEach(file => {
           const event = require(`./../Events/${file}`);
