@@ -15,13 +15,14 @@ bot.categories = fs.readdirSync('./Commands/');
 ["commands", "events"].forEach(handlers=>{
     require(`./Handlers/${handlers}`)(bot);
 })
+
 bot.on("messageUpdate", async (oldMessage, newMessage) => {
-    require("./events/guild/messageUpdate")(oldMessage, newMessage);
-  });
-  
+  require("./events/messageUpdate")(oldMessage, newMessage);
+});
+
 bot.on("messageDelete", async (message) => {
-    require("./Events/guild/messageDelete")(message);
-  });
+  require("./Events/messageDelete")(message);
+});
 
 
 bot.login(process.env.TOKEN1)

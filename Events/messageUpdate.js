@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js");
-module.exports = async (oldMessage, newMessage) => {
+
+module.exports = (oldMessage, newMessage) => {
   try {
     let embed = new MessageEmbed()
       .setTitle(`Pesan Di Edit Terbaru`)

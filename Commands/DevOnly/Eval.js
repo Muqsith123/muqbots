@@ -3,7 +3,7 @@ const { owners } = require('../../config.json')
 
 module.exports = {
     name: 'eval',
-    category: 'DevOnly',
+    categories: 'DevOnly',
     description: 'STTTTTTT',
     run: async(bot, message, args) => {
         if(message.author.id === owners) {

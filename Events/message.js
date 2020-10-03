@@ -1,6 +1,6 @@
-const { prefix } = require('../../config.json')
+const { prefix } = require('../config.json')
 
-module.exports=async(bot, message)=>{
+module.exports = async (bot, message) => {
 	if(message.author.bot) return;
     if(!message.content.startsWith(prefix)) return;
     if(!message.guild) return;

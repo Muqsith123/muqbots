@@ -1,6 +1,6 @@
-const { prefix } = require('../../config.json')
+const { prefix } = require('../config.json')
 
-module.exports=bot=>{
+module.exports = async (bot) =>{
 		console.log(`Logged in as ${bot.user.tag}`)
 		bot.user.setPresence({
 			status: 'idle',
