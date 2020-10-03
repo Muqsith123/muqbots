@@ -1,18 +1,13 @@
-const Command = require('../../Structures/Command.js');
-const Discord = require('discord.js');
-const { post } = require("node-superfetch");
+const { MessageEmbed } = require('discord.js')
 const { owners } = require('../../config.json')
 
-module.exports = class extends Command {
-    constructor(...args) {
-        super(...args, {
-            description: 'Buat Developer',
-            category: 'DevOnly'
-        })
-    }
-    async run(message, args) {
+module.exports = {
+    name: 'eval',
+    category: 'DevOnly',
+    description: 'STTTTTTT',
+    run: async(bot, message, args) => {
         if(message.author.id === owners) {
-            const embed = new Discord.MessageEmbed()
+            const embed = new MessageEmbed()
         .addField("Input", "```js\n" + args.join(" ") + "```");
 
         try {
