@@ -11,7 +11,7 @@ module.exports = (oldMessage, newMessage) => {
       .addField(`Pesan Awal :`, oldMessage.content, true)
       .addField(`Setelah Di Edit :`, newMessage.content, true);
     let channel = oldMessage.guild.channels.cache.find(
-      (ch) => ch.name === "📜-log-bot"
+      (ch) => ch.name === "📜║log-bot"
     );
     if (!channel) return;
     channel.send(embed);
