@@ -19,7 +19,7 @@ module.exports = (message) => {
     let embed = new MessageEmbed()
       .setTitle(`Pesan Terhapus Terbaru !`)
       .setDescription(
-        `**Si ${message.author.tag} Mengubah Pesan Di Channel <#${message.channel.id}>**`
+        `**Si ${message.author.tag} Menghapus Pesan Di Channel <#${message.channel.id}>**`
       )
       .addField(`Berisi :`, message.content, true)
       .setColor(`RED`);
