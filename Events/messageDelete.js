@@ -24,7 +24,7 @@ module.exports = (message) => {
       .addField(`Berisi :`, message.content, true)
       .setColor(`RED`);
     let channel = message.guild.channels.cache.find(
-      (ch) => ch.name === "📜-log-bot"
+      (ch) => ch.name === "📜║log-bot"
     );
     if (!channel) return;
     channel.send(embed);
