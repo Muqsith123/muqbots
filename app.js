@@ -17,7 +17,7 @@ bot.categories = fs.readdirSync('./Commands/');
 })
 
 bot.on("messageUpdate", async (oldMessage, newMessage) => {
-  require("./events/messageUpdate")(oldMessage, newMessage);
+  require("./Events/messageUpdate")(oldMessage, newMessage);
 });
 
 bot.on("messageDelete", async (message) => {
