@@ -7,6 +7,9 @@ module.exports = {
     description: 'Membantu Yang Lagi Mengerjakan Tugas !',
     run: async(bot, message, args) => {
         let tanya = args.join(" ")
+
+        if (!tanya) return message.channel.send('Masukkan Pencarian !');
+       try {
         brainly(tanya, 5, "id").then(res => {
             let hasil = JSON.parse(JSON.stringify(res.data));
             console.log(hasil)
@@ -84,6 +87,9 @@ module.exports = {
             });
             })
             });
+       }catch(err) {
+        console.log(err)
+       } 
         
     }
 }
