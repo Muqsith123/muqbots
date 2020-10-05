@@ -34,7 +34,7 @@ module.exports = {
             )
             message.channel.send(embed).then(msg => {
             msg.react('1️⃣');
-			msg.react('2️⃣');
+	    msg.react('2️⃣');
             msg.react('3️⃣');
             msg.react('4️⃣');
             msg.react('5️⃣');
@@ -93,3 +93,4 @@ module.exports = {
         
     }
 }
+
