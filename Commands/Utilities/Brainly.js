@@ -8,7 +8,7 @@ module.exports = {
     run: async(bot, message, args) => {
         let tanya = args.join(" ")
         brainly(tanya, 5, "id").then(res => {
-            var mydata = JSON.stringify(res.data);
+            var mydata = JSON.stringify(res);
             var hasil = JSON.parse(mydata)
 
             console.log(mydata)       
