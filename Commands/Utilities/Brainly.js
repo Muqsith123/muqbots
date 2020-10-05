@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js');
-const brainly = require('brainly-scraper-v2');
+const brainly = require('brainly-scraper');
  
 module.exports = {
     name: 'brainly',
@@ -10,7 +10,7 @@ module.exports = {
 
         if (!tanya) return message.channel.send('Masukkan Pencarian !');
        try {
-        brainly(tanya, 5, "id").then(res => {
+        brainly(tanya).then(res => {
             let hasil = JSON.parse(JSON.stringify(res.data));
             console.log(hasil)
 

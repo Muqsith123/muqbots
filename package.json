@@ -13,6 +13,7 @@
     "@discordjs/opus": "^0.3.2",
     "@vitalets/google-translate-api": "^4.0.0",
     "ascii-table": "0.0.9",
+    "brainly-scraper": "^1.0.2",
     "brainly-scraper-v2": "^1.0.5",
     "canvas": "^2.6.1",
     "discord.js": "^12.3.1",
