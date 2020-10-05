@@ -10,7 +10,10 @@ module.exports = {
         brainly(tanya, 5, "id").then(res => {
             var mydata = JSON.stringify(res.data);
             var hasil = JSON.parse(mydata)
+
             console.log(mydata)       
     })
    }
 }
+
+           
