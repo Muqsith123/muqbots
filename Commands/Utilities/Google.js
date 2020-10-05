@@ -18,8 +18,8 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
         .setTitle(href.title)
         .setDescription(href.snippet)
-        .setImage(href.pagemap ? href.pagemap.cse_thumbnail[0].src : null)
         .setURL(href.link)
+        .setImage(href.pagemap ? !href.pagemap : null)
         .setColor('#00f1ff')
         .setFooter('Powered By Google')
 
