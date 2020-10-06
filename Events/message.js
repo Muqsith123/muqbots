@@ -1,6 +1,4 @@
 const { prefix } = require('../config.json')
-const alexa = require('alexa-bot-api');
-const ai = new alexa("aw2plm")
 
 module.exports = async (bot, message) => {
     if(!message.content.startsWith(prefix)) return;
