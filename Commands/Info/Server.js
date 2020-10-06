@@ -40,7 +40,12 @@ module.exports = {
 		const members = message.guild.members.cache;
 		const channels = message.guild.channels.cache;
 		const emojis = message.guild.emojis.cache;
-
+		const listrole = message.guild.roles.cache
+			.sort((a, b) => b.position - a.position)
+			.map(r => r)
+			.join(",")
+		if (listrole.length > 1024) listrole = "To many roles to display";
+        if (!listrole) listrole = "No roles";
 		const embed = new MessageEmbed()
 			.setDescription(`**Guild information for __${message.guild.name}__**`)
 			.setColor('#00f1ff')
@@ -76,6 +81,8 @@ module.exports = {
 				`**❯ Jumlah Offline:** ${members.filter(member => member.presence.status === 'offline').size}`,
 				'\u200b'
 			])
+
+			.addField('Role Server', listrole)
 			.setTimestamp();
 		message.channel.send(embed);
 	}
