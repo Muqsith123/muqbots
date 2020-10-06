@@ -4,8 +4,7 @@ module.exports = {
       name: 'ascii',
       category: 'Fun',
       description: 'Rubah Teks Mu Menjadi ASCII',
-      run: async(bot, message, args
-        )=> {
+      run: async(bot, message, args)=> {
 	// eslint-disable-next-line no-unused-vars
     if(!args [0]) return message.channel.send('Mohon Masukkan Text !'); 
     

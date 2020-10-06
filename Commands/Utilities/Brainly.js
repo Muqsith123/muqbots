@@ -88,6 +88,7 @@ module.exports = {
             });
        }catch(err) {
         console.log(err)
+        message.channel.send('Command Error ! (Kemungkinan Karena Server Bukan Server Indonesia)\nDi Karenakan Command Ini Hanya Bisa Di Akses Saat Dev Online\nTerima Kasih !')
        } 
         
     }

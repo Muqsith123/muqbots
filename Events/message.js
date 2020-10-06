@@ -1,7 +1,8 @@
 const { prefix } = require('../config.json')
+const alexa = require('alexa-bot-api');
+const ai = new alexa("aw2plm")
 
 module.exports = async (bot, message) => {
-	if(message.author.bot) return;
     if(!message.content.startsWith(prefix)) return;
     if(!message.guild) return;
     if(!message.member) message.member = await message.guild.fetchMember(message);
