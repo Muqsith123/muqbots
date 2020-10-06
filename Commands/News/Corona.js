@@ -22,37 +22,53 @@ module.exports = {
         if(!args[0]) return message.channel.send(noArgs);
 
         if(args[0] === "all" || args[0] === "semua" || args[0] === "seluruh"){
-            fetch(`https://covid19.mathdro.id/api`)
+            fetch(`https://disease.sh/v3/covid-19/all`)
             .then(response => response.json())
             .then(data => {
-                let confirmed = data.confirmed.value.toLocaleString()
-                let recovered = data.recovered.value.toLocaleString()
-                let deaths = data.deaths.value.toLocaleString()
+                let terkonfirmasi = data.cases.toLocaleString()
+                let selamat = data.recovered.toLocaleString()
+                let modar = data.deaths.toLocaleString()
+                let kasushariini = data.todayCases.toLocaleString()
+                let modarhariini = data.todayDeaths.toLocaleString()
+                let sembuhharini = data.todayRecovered.toLocaleString()
 
                 const embed = new Discord.MessageEmbed()
                 .setColor('#00f1ff')
                 .setTitle(`Berita COVID-19 Di Dunia 🌎`)
-                .addField('Kasus', confirmed)
-                .addField('Sembuh', recovered)
-                .addField('Meninggal', deaths)
-
+                .addField('Kasus', terkonfirmasi)
+                .addField('Sembuh', selamat)
+                .addField('Meninggal', modar)
+                .addField('Kasus Hari Ini', kasushariini)
+                .addField('Meninggal Hari Ini', modarhariini)
+                .addField('Sembuh Hari ini', sembuhharini)
+                .setFooter('Stay Safe Everyone !')
+                
                 message.channel.send(embed)
             })
         } else {
-            fetch(`https://covid19.mathdro.id/api/countries/${countries}`)
+            fetch(`https://disease.sh/v3/covid-19/countries/${countries}`)
             .then(response => response.json())
             .then(data => {
-                let confirmed = data.confirmed.value.toLocaleString()
-                let recovered = data.recovered.value.toLocaleString()
-                let deaths = data.deaths.value.toLocaleString()
+                let negara = data.country
+                let bendera = data.countryInfo.flag
+                let terkonfirmasi = data.cases.toLocaleString()
+                let selamat = data.recovered.toLocaleString()
+                let modar = data.deaths.toLocaleString()
+                let kasushariini = data.todayCases.toLocaleString()
+                let modarhariini = data.todayDeaths.toLocaleString()
+                let sembuhharini = data.todayRecovered.toLocaleString()
 
                 const embed = new Discord.MessageEmbed()
                 .setColor('#00f1ff')
-                .setTitle(`Berita COVID-19 Untuk Negara **${countries}**`)
-                .addField('Kasus', confirmed)
-                .addField('Sembuh', recovered)
-                .addField('Meninggal', deaths)
-
+                .setTitle(`Berita COVID-19 Untuk Negara **${negara}**`)
+                .setThumbnail(bendera)
+                .addField('Kasus', terkonfirmasi)
+                .addField('Sembuh', selamat)
+                .addField('Meninggal', modar)
+                .addField('Kasus Hari Ini', kasushariini)
+                .addField('Meninggal Hari Ini', modarhariini)
+                .addField('Sembuh Hari ini', sembuhharini)
+                .setFooter('Stay Safe Everyone !')
                 message.channel.send(embed)
             }).catch(e => {
                 return message.channel.send('Masukkan Negara Yang Benar !')
