@@ -5,9 +5,9 @@ module.exports = {
     name: 'eval',
     categories: 'DevOnly',
     description: 'STTTTTTT',
+    ownerOnly: true,
     run: async(bot, message, args) => {
-        if(message.author.id === owners) {
-            const embed = new MessageEmbed()
+         const embed = new MessageEmbed()
         .addField("Input", "```js\n" + args.join(" ") + "```");
 
         try {
@@ -55,8 +55,5 @@ module.exports = {
               return string;
             }
          }
-        } else {
-            message.channel.send("Kamu Bukan Pemilik BOT Ini !")
-        }
     }
 }
