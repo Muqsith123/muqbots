@@ -20,6 +20,6 @@ module.exports = {
     
                 message.channel.send(embed)
             })
-        }, 60000)
+        }, 900000)
     }
 }
