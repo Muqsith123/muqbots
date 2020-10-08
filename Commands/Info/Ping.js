@@ -1,9 +1,11 @@
 const Discord = require('discord.js')
+const { prefix } = require('../../config.json')
 
 module.exports = {
       name: 'ping',
       category: 'Info',
       description: 'Melihat Status BOT',
+      usage: `${prefix}ping`,
       run: async(bot, message)=> {
             
         const m = await message.channel.send('Mendapatkan Info ...')

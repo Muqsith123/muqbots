@@ -1,9 +1,11 @@
 const figlet = require('figlet');
+const { prefix } = require('../../config.json')
 
 module.exports = {
       name: 'ascii',
       category: 'Fun',
       description: 'Rubah Teks Mu Menjadi ASCII',
+      usage: `${prefix}alexa (Text Yang Di Jadiin ASCII)`,
       run: async(bot, message, args)=> {
 	// eslint-disable-next-line no-unused-vars
     if(!args [0]) return message.channel.send('Mohon Masukkan Text !'); 

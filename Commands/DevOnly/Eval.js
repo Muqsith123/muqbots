@@ -1,10 +1,11 @@
 const { MessageEmbed } = require('discord.js')
-const { owners } = require('../../config.json')
+const { owners, prefix } = require('../../config.json')
 
 module.exports = {
     name: 'eval',
-    categories: 'DevOnly',
+    category: 'DevOnly',
     description: 'STTTTTTT',
+    usage: `${prefix}eval (CODE)`,
     ownerOnly: true,
     run: async(bot, message, args) => {
          const embed = new MessageEmbed()
