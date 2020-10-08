@@ -113,7 +113,8 @@ const listbahasa = {
 module.exports = {
 	name: 'translate',
 	category: 'Utilities',
-	description: 'Menerjemahkan Bahasa !',
+    description: 'Menerjemahkan Bahasa !',
+    aliases: ['tr'],
 	run: async(bot, message, args)=> {
         let bahasa = args[0]
         let kata = args.join(" ").slice(bahasa.length);

@@ -3,7 +3,8 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
 	name: 'avatar',
 	category: 'Utilities',
-	description: 'Melihat PP Orang',
+  description: 'Melihat PP Orang',
+  aliases : ['pp'],
 	run: async(bot, message)=> {
 	let member = message.mentions.users.first() || message.author
 

@@ -5,6 +5,7 @@ module.exports = {
     name: 'brainly',
     category: 'Info',
     description: 'Membantu Yang Lagi Mengerjakan Tugas !',
+    aliases: ['br'],
     run: async(bot, message, args) => {
         let tanya = args.join(" ")
 

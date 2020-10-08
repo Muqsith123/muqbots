@@ -3,6 +3,7 @@ module.exports = {
   name: "snipe",
   description: "Melihat Pesan Yang Terhapus !",
   category: "Utilities",
+  aliases: ['ciduk'],
   run: async (bot, message, args) => {
     const snipes = bot.snipes.get(message.channel.id) || [];
     const msg = snipes[args[0] - 1 || 0];

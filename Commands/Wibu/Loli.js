@@ -7,6 +7,7 @@ module.exports = {
     description: 'Menuhin Gizi lo',
     category: 'Wibu',
     run: async(bot, message) => {
+        if (!message.channel.nsfw) return message.channel.send('Channel Ini Bukan NSFW') 
         loli.getSFWLoli().then((loliJSONoutput) => {
             const embed = new MessageEmbed()
             .setColor('#00f1ff')

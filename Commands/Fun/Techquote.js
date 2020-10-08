@@ -6,6 +6,7 @@ module.exports = {
     name: 'techquote',
     category: 'Fun',
     description: 'Membuat Programmer Menjadi Semangat !',
+    aliases: ['quote'],
     run: async(bot, message)=> {
     fetch("http://quotes.stormconsultancy.co.uk/random.json")
     .then(response => response.json())

@@ -6,6 +6,7 @@ module.exports = {
     name: 'corona',
     category: 'News',
     description: 'Melihat Jumlah COVID-19 Di Dunia!',
+    aliases: ['covid'],
     run: async(bot, message, args)=> {
 
 	// eslint-disable-next-line no-unused-vars
