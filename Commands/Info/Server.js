@@ -40,7 +40,7 @@ module.exports = {
 		const members = message.guild.members.cache;
 		const channels = message.guild.channels.cache;
 		const emojis = message.guild.emojis.cache;
-		const listrole = message.guild.roles.cache
+		let listrole = message.guild.roles.cache
 			.sort((a, b) => b.position - a.position)
 			.map(r => r)
 			.join(",")
