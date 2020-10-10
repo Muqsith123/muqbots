@@ -1,9 +1,11 @@
-const fs = require('fs')
+const mongo = require('mongodb')
 
 module.exports = {
-    name: 'write',
+    name: 'blacklist',
     description: 'WEW',
     category: 'DevOnly',
+    ownerOnly: true,
     run: async(bot, message) => {
+
     }
 }

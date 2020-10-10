@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const { prefix } = require('../../config.json')
+const { prefix, owners } = require('../../config.json')
 const { readdirSync } = require('fs')
 
 module.exports = {
@@ -36,6 +36,7 @@ module.exports = {
             )
             let duar = banyakctr.length - 1;
             if(i === duar) {
+                if(message.author.id != owners) anjayani.fields[0] = [];
                 anjayani.setColor('#00f1ff')
                 anjayani.setThumbnail(bot.user.avatarURL())
                 message.channel.send(anjayani)

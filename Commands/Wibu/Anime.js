@@ -4,7 +4,7 @@ const translate = require('@vitalets/google-translate-api')
 
 module.exports = {
     name: 'anime',
-    description: 'META JANCOK',
+    description: 'Search Anime Yang Klean Cari !',
     category: 'Wibu',
     run: async(bot, message, args) => {
         const pencarian = args.join(" ")

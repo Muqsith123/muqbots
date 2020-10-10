@@ -10,8 +10,8 @@ module.exports = async (bot, message) => {
     let command = bot.commands.get(cmd) || bot.commands.get(bot.aliases.get(cmd));
     if(!command) return;
     if(command.ownerOnly) {
-        if(!message.author.id === owners) return;
-        if(message.author.id === owners) command.run(bot,message,args);
+        if(message.author.id != owners) return message.channel.send('Only Owner Can Use This !');
+        command.run(bot,message,args);
     } else if(command) command.run(bot,message,args)
     
 }
