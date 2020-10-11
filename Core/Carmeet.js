@@ -7,7 +7,7 @@ module.exports = async (bot, message) => {
         if (message.member.roles.cache.get('730010922369679440')) return message.reply('Anda Sudah Terdaftar !');
         if (message.member.roles.cache.get('738395119992176670')) return message.reply('Anda Sudah Terdaftar !');
         if (message.member.roles.cache.get('748073934745763922')) return message.reply('Anda Sudah Terdaftar !');
-        if (message.member.roles.cache.get('764709773643218954')) return message.reply('Anda Sudah Terdaftar !');
+        if (message.member.roles.cache.get('764743128032608288')) return message.reply('Anda Sudah Terdaftar !');
         if (a === 15) return message.reply('Maaf Sudah Tercapai limit Lain Kali Aja Ya !')
           let role = message.guild.roles.cache.get('764709773643218954')
           let member = message.author.id
