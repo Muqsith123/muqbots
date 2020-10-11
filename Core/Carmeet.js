@@ -2,7 +2,7 @@ let a = 0;
 
 module.exports = async (bot, message) => {
     if(message.author.bot) return;
-    if (!message.channel.id === "764731128804278272") return; 
+    if (message.channel.id != "764731128804278272") return; 
       if(message.content === "Saya Siap Ikut Carmeet") {
         if (message.member.roles.cache.get('730010922369679440')) return message.reply('Anda Sudah Terdaftar !');
         if (message.member.roles.cache.get('738395119992176670')) return message.reply('Anda Sudah Terdaftar !');
