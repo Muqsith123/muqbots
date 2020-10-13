@@ -1,4 +1,4 @@
-let a = 8;
+let a = 10;
 
 module.exports = async (bot, message) => {
     if(message.author.bot) return;
