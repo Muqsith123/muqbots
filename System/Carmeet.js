@@ -1,4 +1,5 @@
-let a = 10;
+let a = 13;
+let config = require('../config.json')
 
 module.exports = async (bot, message) => {
     if(message.author.bot) return;
@@ -35,6 +36,7 @@ module.exports = async (bot, message) => {
           message.reply(`Anda Di Terima Sebagai Urutan Ke ${a}`)
           target.roles.add(role).catch(console.error);
         } else {
+          if(message.author.id(config.owners)) return;
           message.delete({timeout : 2000})
           message.reply('Mohon Masukkan Command Yang Benar `Saya Siap Ikut Carmeet`').then(msg => {
           msg.delete({ timeout: 5000})

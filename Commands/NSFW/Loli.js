@@ -5,9 +5,14 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
     name: 'loli',
     description: 'Menuhin Gizi lo',
-    category: 'Wibu',
+    category: 'NSFW',
     run: async(bot, message) => {
-        if (!message.channel.nsfw) return message.channel.send('Channel Ini Bukan NSFW') 
+        let ijin = true;
+        if (!message.channel.nsfw) ijin = false;
+        if (message.author.id === '710492761303941150') ijin = true;
+        if(ijin === false) return message.reply('Command Hanya Bisa Di Akses Di Channel NSFW !')
+
+        if (ijin === true) {
         loli.getSFWLoli().then((loliJSONoutput) => {
             const embed = new MessageEmbed()
             .setColor('#00f1ff')
@@ -17,5 +22,6 @@ module.exports = {
 
             message.channel.send(embed)
         })
+    }
     }
 }

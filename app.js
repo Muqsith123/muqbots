@@ -15,7 +15,7 @@ bot.aliases = new Discord.Collection();
 bot.snipes = new Discord.Collection();
 bot.categories = fs.readdirSync('./Commands/');
 
-["commands", "events", "core"].forEach(handlers=>{
+["commands", "events", "system"].forEach(handlers=>{
     require(`./Handlers/${handlers}`)(bot);
 })
 

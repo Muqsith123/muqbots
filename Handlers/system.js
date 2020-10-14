@@ -1,10 +1,10 @@
 const fs = require('fs');
 
 module.exports = (bot) => {
-    fs.readdir("./Core/", (err, files) => {
+    fs.readdir("./System/", (err, files) => {
         if (err) return console.error(err);
         files.forEach(file => {
-            const core = require(`../Core/${file}`)
+            const core = require(`../System/${file}`)
             bot.on("message", core.bind(null, bot))
         });
     })
