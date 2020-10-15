@@ -18,31 +18,30 @@ module.exports = {
     blacklist.forEach(async site => {
       if(web.includes(site)) return message.reply('Bokep Aja Teros !');
       if(!web.includes('https://')) web = 'https://' + web;
-      setTimeout(async function(){
-        try {
-          const browser = await puppeteer.launch({
-          defaultViewport: {width: 1920, height: 1080},
-          'args' : [
-          '--no-sandbox',
-          '--disable-setuid-sandbox'
-          ]
-           });
-              const page = await browser.newPage();
-              await page.goto(web);
-    
-              let a = await page.screenshot({path: 'example.png'});
-              
-              await browser.close();
-
-              const attachment = new Discord.MessageAttachment(a);
-      
-              message.channel.send(attachment)
-  
-    
-          }catch {
-            return message.channel.send('Gagal Mengunjungi Website. Pastikan Menulis Dengan Benar !');
-            }
-      }, 5000)
     })
+
+    try {
+      const browser = await puppeteer.launch({
+      defaultViewport: {width: 1920, height: 1080},
+      'args' : [
+      '--no-sandbox',
+      '--disable-setuid-sandbox'
+      ]
+       });
+          const page = await browser.newPage();
+          await page.goto(web);
+
+          let a = await page.screenshot({path: 'example.png'});
+          
+          await browser.close();
+
+          const attachment = new Discord.MessageAttachment(a);
+  
+          message.channel.send(attachment)
+
+
+      }catch {
+        return message.channel.send('Gagal Mengunjungi Website. Pastikan Menulis Dengan Benar !');
+        }
    }
 }
