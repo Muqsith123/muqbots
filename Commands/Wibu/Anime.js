@@ -15,35 +15,40 @@ module.exports = {
         searchbyName(pencarian).then(async (result)=>{
             let hasil = await JSON.parse(JSON.stringify(result));
             console.log(hasil)
-
             const a = new MessageEmbed()
-
+            .setColor('#00f1ff')
+            .setFooter('Masukkan Angka List Anime Untuk Melihat Detail !')
             for(i = 0;i < hasil.length; i++) {
+                let lutfi = i + 1;
                 a.addFields(
-                {name: hasil[i].name, value: "\n\u200b", inline: false}
+                {name: `${lutfi}. ${hasil[i].name}`, value: "\n\u200b", inline: false}
                 )
             }
             if(i === hasil.length) return message.channel.send(a).then(msg => {
-                bot.on("message", message => {
-                    let wow = 0;
-                    if(message.author.bot) return;
-                    if(message.content != wow) return message.reply('Mohon Masukkan Angka Dari List Anime !');
-                    translate(hasil[wow].plot, {to: 'id'}).then(res => {
-                        let terjemahan = res.text
-                        const embed = new MessageEmbed()
-                    .setColor('#00f1ff')
-                    .setTitle(hasil[wow].name)
-                    .setDescription(hasil[wow].plot)
-                    .setImage(hasil[wow].img)
-                    .addFields(
-                        {name: 'Terjemahan :', value: terjemahan, inline: false},
-                        {name: 'Rating :', value: hasil[wow].rating, inline: false},
-                        {name: 'Type :', value: hasil[wow].type, inline: false}
-                    )
-        
-                    message.channel.send(embed)
+                message.channel.awaitMessages(m => m.author.id == message.author.id,
+                    {max: 1, time: 30000}).then(collected => {
+                        let wow = collected.first().content-1
+                        if(message.author.bot) return;
+                       translate(hasil[wow].plot, {to: 'id'}).then(res => {
+                            let terjemahan = res.text
+                            const embed = new MessageEmbed()
+                        .setColor('#00f1ff')
+                        .setTitle(hasil[wow].name)
+                        .setImage(hasil[wow].img)
+                        .setDescription(hasil[wow].plot)
+                        .addFields(
+                            {name: 'Terjemahan :', value: terjemahan, inline: false},
+                            {name: 'Rating :', value: hasil[wow].rating, inline: false},
+                            {name: 'Type :', value: hasil[wow].type, inline: false}
+                        )
+            
+                        message.channel.send(embed)
+                        })
+                    }).catch((err) => {
+                        console.log(err)
+                        message.reply('Anda Tidak Memasukkan Angka List !')
                     })
-                })
+
             })
             
              

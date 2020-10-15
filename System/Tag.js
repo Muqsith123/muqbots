@@ -2,7 +2,7 @@ const talkedRecently = new Set();
 
 module.exports = async(bot, message) => {
     if(message.author.bot) return;
-    if(message.content.includes(bot.user.id)) {
+    if(message.content === (`<@!${bot.user.id}>`)) {
 
         if (talkedRecently.has(message.author.id)) {
             message.channel.send("<a:pong:763015760981131265>");
