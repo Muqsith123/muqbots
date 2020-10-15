@@ -16,7 +16,7 @@ module.exports = {
     ]
     
     blacklist.forEach(async site => {
-      if(web.includes(site)) return message.reply('Bokep Aja Teros !')
+      if(web.includes(site)) return message.reply('Bokep Aja Teros !');
       if(!web.includes('https://')) web = 'https://' + web;
       setTimeout(async function(){
         try {
@@ -31,18 +31,18 @@ module.exports = {
               await page.goto(web);
     
               let a = await page.screenshot({path: 'example.png'});
-    
+              
+              await browser.close();
+
               const attachment = new Discord.MessageAttachment(a);
       
               message.channel.send(attachment)
+  
     
-              await browser.close();
-    
-          }catch(err) {
-            console.log(err)
+          }catch {
             return message.channel.send('Gagal Mengunjungi Website. Pastikan Menulis Dengan Benar !');
             }
       }, 5000)
     })
    }
-} 
+}
