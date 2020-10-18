@@ -1,4 +1,4 @@
-let a = 13;
+let a = 0;
 let config = require('../config.json')
 
 module.exports = async (bot, message) => {
