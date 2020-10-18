@@ -2,6 +2,9 @@ const { MessageEmbed } = require("discord.js");
 module.exports = (message) => {
   try {
     if (message.author.bot) return;
+
+    let anjayani = ['@everyone', '@here']
+    if (anjayani.some(bruh => message.content.includes(bruh)) && message.author.id === '710492761303941150') return;
     const snipes = message.client.snipes.get(message.channel.id) || [];
     snipes.unshift({
       content: message.content,

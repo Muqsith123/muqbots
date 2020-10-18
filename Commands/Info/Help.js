@@ -28,15 +28,26 @@ module.exports = {
             let anjayani = new MessageEmbed()
             for(i = 0;i < banyakctr.length; i++) {
             const a = bot.categories[i]
-    
+                
+            let namakategori;
+            if(a === 'Config') namakategori = ':gear:║ Config';
+            else if(a === 'DevOnly') namakategori = ':tools:║ Developer Only';
+            else if(a === 'Fun') namakategori = ':smile:║Fun';
+            else if(a === 'Music') namakategori = ':musical_note:║Music';
+            else if(a === 'Info') namakategori = ':information_source:║Info';
+            else if(a === 'NSFW') namakategori = ':underage:║NSFW';
+            else if(a === 'News') namakategori = ':newspaper:║News';
+            else if(a === 'Utilities') namakategori = ':tools:║Utilities';
+            else if(a === 'Wibu') namakategori = ':ribbon:║Weaboo';
+
             let commandwew = readdirSync(`./Commands/${a}/`).join(" " + prefix)
             
             anjayani.addFields(
-                {name: a, value: prefix + commandwew.replace(/.js/gi, ""), inline: false}
+                {name: namakategori, value: prefix + commandwew.replace(/.js/gi, "").toLowerCase(), inline: false}
             )
             let duar = banyakctr.length - 1;
             if(i === duar) {
-                if(message.author.id != owners) anjayani.fields[0] = [];
+                if(message.author.id != owners) anjayani.fields[1] = [];
                 anjayani.setColor('#00f1ff')
                 anjayani.setThumbnail(bot.user.avatarURL())
                 message.channel.send(anjayani)

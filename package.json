@@ -37,7 +37,7 @@
     "request": "^2.88.2",
     "util": "^0.12.3",
     "xml2js": "^0.4.23",
-    "ytdl-core": "^3.2.2"
+    "ytdl-core": "^3.4.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.4",

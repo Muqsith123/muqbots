@@ -41,7 +41,7 @@ module.exports = {
 
 
       }catch {
-        return message.channel.send('Gagal Mengunjungi Website. Pastikan Menulis Dengan Benar !');
+        message.reply('Error Mengunjungi WEBSITE. Pastikan Menulis URL Dengan Benar !');
         }
    }
 }

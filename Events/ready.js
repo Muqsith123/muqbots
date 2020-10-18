@@ -5,7 +5,8 @@ module.exports = async (bot) =>{
 		console.log(`Logged in as ${bot.user.tag}`)
 		mongoose.connect(process.env.mongoose, {
 			useNewUrlParser: true,
-			useUnifiedTopology: true
+			useUnifiedTopology: true,
+			useFindAndModify: false 
 		}).then(console.log('MongoDB Login !'))
 		bot.user.setPresence({
 			status: 'idle',

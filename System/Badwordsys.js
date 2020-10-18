@@ -1,9 +1,16 @@
 const { MessageEmbed } = require('discord.js')
+const settings = require('../MongoDB/badword')
+const mongoose = require('mongoose')
+const { badword } = require('../sc/badword.json')
 
 module.exports = async (bot, message) => {
-    const sys = require('../sc/settings.json')
-    let blockbw = true;
-    let { badword } = require('../sc/badword.json')
+    let blockbw = false;
+
+    let data = await settings.findOne({
+        GuildID: message.guild.id
+    })
+    if(!data) return;
+    if(data) blockbw = true;
 
     let admin = [
         '730010922369679440',
@@ -17,7 +24,7 @@ module.exports = async (bot, message) => {
     })
 
     badword.forEach(salahsatubadword => {
-        if(sys.badword && blockbw && message.content.toLowerCase().includes(salahsatubadword)) {
+        if(blockbw && message.content.toLowerCase().includes(salahsatubadword)) {
             message.delete()
 
             const embed = new MessageEmbed()

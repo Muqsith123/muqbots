@@ -9,20 +9,17 @@ module.exports = {
     ownerOnly: true,
     run: async(bot, message, args) => {
          const embed = new MessageEmbed()
-        .addField("Input", "```js\n" + args.join(" ") + "```");
-
+        .addField("Input", "```js\n" + args.join(" ") + "```")
         try {
             const code = args.join(" ");
             if (!code) return message.channel.send("Mohon Masukkan Codenya !");
             let evaled;
-            
             // This method is to prevent someone that you trust, open the secret shit here.
             if (code.includes(`SECRET`) || code.includes(`TOKEN1`) || code.includes("process.env")) {
               evaled = "Sistem Menolak Untuk Menampilkan Hal Rahasia !";
             } else {
               evaled = eval(code);
             }
-            
             if (typeof evaled !== "string") evaled = require("util").inspect(evaled, {depth: 0});
             
             let output = clean(evaled);
