@@ -18,18 +18,18 @@ module.exports = async (bot, message) => {
         let list_terdaftar = [founder,
                               coadmin,
                               staff,
-                              carmeet2]
+                              carmeet1]
 
         list_terdaftar.forEach(getrole => {
           if (message.member.roles.cache.get(getrole)) return sudahikut = true;
         })
-        if (message.member.roles.cache.get(carmeet1)) return message.reply('Anda Sudah Mengikuti Carmeet Sebelumnya !');
+        if (message.member.roles.cache.get(carmeet2)) return message.reply('Anda Sudah Mengikuti Carmeet Sebelumnya !');
         
         if (sudahikut) return message.reply('Anda Sudah Terdaftar !')
         if (a === 15) return message.reply('Maaf Sudah Tercapai limit Lain Kali Aja Ya !')
 
         //Jika Belum Daftar Maka Akan Melanjutkan Ini :
-          let role = message.guild.roles.cache.get(carmeet2)
+          let role = message.guild.roles.cache.get(carmeet1)
           let member = message.author.id
           const target = message.guild.members.cache.get(member);
           a++
