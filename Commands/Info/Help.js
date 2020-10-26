@@ -1,12 +1,14 @@
 const { MessageEmbed } = require('discord.js')
-const { prefix, owners } = require('../../config.json')
+const { prefixasli, owners } = require('../../config.json')
 const { readdirSync } = require('fs')
+const mongoose = require('mongoose')
+const csprefix = require('../../MongoDB/mongodb')
 
 module.exports = {
     name: 'help',
     description: 'Menjelaskan Command Command',
     category: 'Info',
-    usage: `${prefix}help/${prefix}help (Command)`,
+    usage: `(prefix)help/(prefix)help (Command)`,
     run: async(bot, message, args) => {
         let name = args[0]
         let commands = bot.commands;
@@ -23,6 +25,13 @@ module.exports = {
                 return message.channel.send("Command Tidak Valid !")
             }
         }else {
+            let prefix
+            let data = await csprefix.findOne({
+                GuildID: message.guild.id,
+            })
+            if(data && data.Prefix) prefix = data.Prefix;
+            if (!data.Prefix || !data) prefix = prefixasli;
+
             const banyakctr = bot.categories
             var i;
             let anjayani = new MessageEmbed()
@@ -39,11 +48,11 @@ module.exports = {
             else if(a === 'News') namakategori = ':newspaper:║News';
             else if(a === 'Utilities') namakategori = ':tools:║Utilities';
             else if(a === 'Wibu') namakategori = ':ribbon:║Weaboo';
-
-            let commandwew = readdirSync(`./Commands/${a}/`).join(" " + prefix)
+            
+            let commandwew = readdirSync(`./Commands/${a}/`).join(", " + `${prefix}`)
             
             anjayani.addFields(
-                {name: namakategori, value: prefix + commandwew.replace(/.js/gi, "").toLowerCase(), inline: false}
+                {name: namakategori, value: '`' + prefix + commandwew.replace(/.js/gi, "").toLowerCase() + '`', inline: false}
             )
             let duar = banyakctr.length - 1;
             if(i === duar) {

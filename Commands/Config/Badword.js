@@ -1,46 +1,44 @@
-const prefixModel = require('../../MongoDB/badword');
+const prefixModel = require('../../MongoDB/mongodb');
 const mongoose = require('mongoose');
 
 module.exports = {
     name: 'badword',
-    description: 'Mengatur Pengaturan Badword',
-    category: 'DevOnly',
+    description: 'Mengatur Pengaturan badword',
+    category: 'Config',
     adminOnly: true,
     run: async(bot, message) => {
-        
         console.log('Program Di Eksekusi !')
         const data = prefixModel.findOneAndRemove({
             GuildID: message.guild.id
         })
 
-        if(data) {
-            message.reply('Sukses Memulai !')
-
-            let newData = new prefixModel({
-                Badword: true,
-                GuildID: message.guild.id
-            })
-            newData.save();
-        }
-        else if (data.Badword === true) {
-            message.reply('Sukses Mematikan Sistem Badword !')
+        if (data && data.badword === "true") {
+            message.reply('Sukses Mematikan Sistem badword !')
             await prefixModel.findOneAndRemove({
                 GuildID: message.guild.id
             })
             let newData = new prefixModel({
-                Badword: false,
+                badword: "false",
                 GuildID: message.guild.id
             })
             newData.save();
-        } else if(data.Badword === false){
-            message.reply('Sukses Menyalakan Sistem Badword !');
+        } else if(data && data.badword === "false"){
+            message.reply('Sukses Menyalakan Sistem badword !');
             
             await prefixModel.findOneAndRemove({
                 GuildID: message.guild.id
             })
 
             let newData = new prefixModel({
-                Badword: true,
+                badword: "true" ,
+                GuildID: message.guild.id
+            })
+            newData.save();
+        } else if(!data.badword || !data) {
+            message.reply('Sukses Memulai !')
+
+            let newData = new prefixModel({
+                badword: "true",
                 GuildID: message.guild.id
             })
             newData.save();

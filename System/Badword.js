@@ -1,17 +1,19 @@
 const { MessageEmbed } = require('discord.js')
-const settings = require('../MongoDB/badword')
+const settings = require('../MongoDB/mongodb')
 const mongoose = require('mongoose')
 const { badword } = require('../sc/badword.json')
 
 module.exports = async (bot, message) => {
-    let blockbw = false;
+    let blockbw;
 
     let data = await settings.findOne({
         GuildID: message.guild.id
     })
-    if(!data) return;
-    if(data) blockbw = true;
+    if(!data || !data.badword) return;
+    if(data.badword === "true") blockbw = true;
+    else if(data.badword === "false") blockbw = false;
 
+    
     let admin = [
         '730010922369679440',
         '738395119992176670',
@@ -31,7 +33,9 @@ module.exports = async (bot, message) => {
             .setColor('RED')
             .setTitle('Mohon Menjaga Perkataan !')
             .setDescription('Sistem Di Buat Agar Saling Menghormati Sesama Member !')
-            message.channel.send(embed)
+            message.channel.send(embed).then(msg => {
+                msg.delete({timeout: 5000})
+            })
         }
     })
 }

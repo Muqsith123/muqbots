@@ -6,8 +6,8 @@ module.exports = async (bot, message) => {
     let data = await csprefix.findOne({
         GuildID: message.guild.id,
     })
-    if(data) prefix = data.Prefix;
-    if (!data) prefix = settingan.prefix;
+    if(data && data.Prefix) prefix = data.Prefix;
+    if (!data || !data.Prefix) prefix = settingan.prefix;
     if(!message.content.startsWith(prefix)) return;
     if(!message.guild) return;
     if(!message.member) message.member = await message.guild.fetchMember(message);
