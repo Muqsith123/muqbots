@@ -4,10 +4,8 @@ const ytdl = require('ytdl-core')
 const bot = new Discord.Client({
     disableMentions: "everyone"
 })
-
+ 
 const config = require('./config.json');
-const message = require('./Events/message');
-const { options } = require('node-superfetch');
 const prefix = config.prefix;
 const owners = config.owners;
 
@@ -20,6 +18,7 @@ bot.queue = new Map();
 ["commands", "events", "system"].forEach(handlers=>{
     require(`./Handlers/${handlers}`)(bot);
 })
+
 
 bot.on("messageUpdate", async (oldMessage, newMessage) => {
   require("./Events/messageUpdate")(oldMessage, newMessage);
