@@ -1,3 +1,7 @@
+const {createServer} = require('http')
+const server = createServer(() => {})
+server.listen(3000)
+
 const Discord = require('discord.js');
 const fs = require('fs')
 const ytdl = require('ytdl-core')
