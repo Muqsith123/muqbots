@@ -4,7 +4,16 @@ const ytdl = require('ytdl-core')
 const bot = new Discord.Client({
     disableMentions: "everyone"
 })
- 
+
+const http = require('http');
+http.createServer((req, res) => {
+res.writeHead(200, {
+    'Content-type': 'text/plain'
+});
+    res.write('Hey');
+    res.end();
+}).listen(4000);
+
 const config = require('./config.json');
 const prefix = config.prefix;
 const owners = config.owners;
