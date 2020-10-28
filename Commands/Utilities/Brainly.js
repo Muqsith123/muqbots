@@ -1,14 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const kagApi = require('@kagchi/kag-api')
-
-function titleCase(str) {
-    return str.replace(
-      /\w\S*/g,
-      function(txt) {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-      }
-    );
-  }
+const { titleCase } = require('../../sc/Functions/titleCase') 
 
 module.exports = {
     name: 'brainly',
@@ -51,41 +43,18 @@ module.exports = {
                     .then(collected => {
                         const reaction = collected.first();
                         
-                        if(reaction.emoji.name === '1️⃣') {
-                            const embedjwb = new MessageEmbed()
+                        let a;
+                        if(reaction.emoji.name === '1️⃣') a = 0;
+                        else if(reaction.emoji.name === '2️⃣') a = 1;
+                        else if(reaction.emoji.name === '3️⃣') a = 2;
+                        else if(reaction.emoji.name === '4️⃣') a = 3;
+                        else if(reaction.emoji.name === '5️⃣') a = 4;
+
+                        const embedjwb = new MessageEmbed()
                             .setColor('#00f1ff')
-                            .setTitle(titleCase(hasil[0].node.content))
-                            .setDescription(titleCase(hasil[0].node.answers.nodes[0].content))
+                            .setTitle(titleCase(hasil[i].node.content))
+                            .setDescription(titleCase(hasil[i].node.answers.nodes[0].content))
                             message.channel.send(embedjwb)
-                        }
-                        else if(reaction.emoji.name === '2️⃣') {
-                            const embedjwb = new MessageEmbed()
-                            .setColor('#00f1ff')
-                            .setTitle(titleCase(hasil[1].node.content))
-                            .setDescription(titleCase(hasil[1].node.answers.nodes[0].content))
-                            message.channel.send(embedjwb)
-                        }
-                        else if(reaction.emoji.name === '3️⃣') {
-                            const embedjwb = new MessageEmbed()
-                            .setColor('#00f1ff')
-                            .setTitle(titleCase(hasil[2].node.content))
-                            .setDescription(titleCase(hasil[2].node.answers.nodes[0].content))
-                            message.channel.send(embedjwb)
-                        }
-                        else if(reaction.emoji.name === '4️⃣') {
-                            const embedjwb = new MessageEmbed()
-                            .setColor('#00f1ff')
-                            .setTitle(titleCase(hasil[3].node.content))
-                            .setDescription(titleCase(hasil[3].node.answers.nodes[0].content))
-                            message.channel.send(embedjwb)
-                        }
-                        else if(reaction.emoji.name === '5️⃣') {
-                            const embedjwb = new MessageEmbed()
-                            .setColor('#00f1ff')
-                            .setTitle(titleCase(hasil[4].node.content))
-                            .setDescription(titleCase(hasil[4].node.answers.nodes[0].content))
-                            message.channel.send(embedjwb)
-                        }
                     }).catch(collected => {
                         message.reply('Anda Tidak Mereact Untuk Memunculkan Jawaban !');
                     });
