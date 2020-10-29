@@ -4,15 +4,7 @@ const ytdl = require('ytdl-core')
 const bot = new Discord.Client({
     disableMentions: "everyone"
 })
-
-const http = require('http');
-http.createServer((req, res) => {
-res.writeHead(200, {
-    'Content-type': 'text/plain'
-});
-    res.write('Hey');
-    res.end();
-}).listen(4000);
+const { config } = require('dotenv')
 
 const config = require('./config.json');
 const prefix = config.prefix;
@@ -23,6 +15,10 @@ bot.aliases = new Discord.Collection();
 bot.snipes = new Discord.Collection();
 bot.categories = fs.readdirSync('./Commands/');
 bot.queue = new Map();
+
+config({
+  path: __dirname + "/.env"
+});
 
 ["commands", "events", "system"].forEach(handlers=>{
     require(`./Handlers/${handlers}`)(bot);
