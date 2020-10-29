@@ -6,9 +6,9 @@ const bot = new Discord.Client({
 })
 const { config } = require('dotenv')
 
-const config = require('./config.json');
-const prefix = config.prefix;
-const owners = config.owners;
+const configjson = require('./config.json')
+const prefix = configjson.prefix;
+const owners = configjson.owners;
 
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
