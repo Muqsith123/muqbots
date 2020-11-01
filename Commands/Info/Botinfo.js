@@ -17,7 +17,7 @@ module.exports = {
   description: 'Show Bot Info !',
   category: 'Info',
   run: async(bot, message) => {
-      const pemilik = bot.users.cache.get(owners).tag
+      const pemilik = bot.users.cache.get(owners[0]).tag
       const core = os.cpus()[0]
       let embed = new MessageEmbed()
       .setThumbnail(bot.user.displayAvatarURL())
