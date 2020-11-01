@@ -52,7 +52,7 @@ module.exports = {
             let commandwew = readdirSync(`./Commands/${a}/`).join(", " + `${prefix}`)
             
             anjayani.addFields(
-                {name: namakategori, value: '`' + prefix + commandwew.replace(/.js/gi, "").toLowerCase() + '`', inline: false}
+                {name: namakategori, value: '`' + prefix + commandwew.replace(/.js/gi, "").toLowerCase() + '`', inline: true}
             )
             let duar = banyakctr.length - 1;
             if(i === duar) {

@@ -8,7 +8,7 @@ module.exports = async (bot, message) => {
     })
     if(data && data.Prefix) prefix = data.Prefix;
     if (!data || !data.Prefix) prefix = settingan.prefix;
-    if(!message.content.startsWith(prefix)) return;
+    if(!message.content.toLowerCase().startsWith(prefix)) return;
     if(!message.guild) return;
     if(!message.member) message.member = await message.guild.fetchMember(message);
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
