@@ -9,7 +9,7 @@ module.exports = {
     run: async(bot, message, args) => {
         let total = parseInt(args[0]);
         if(!total) return message.channel.send("Please Input Total !")
-        let query = args.join(" ").slice(2);
+        let query = args.join(" ").slice(total.length);
         if(!query) return message.channel.send('Please Input Query !')
 
         gplay.search({
