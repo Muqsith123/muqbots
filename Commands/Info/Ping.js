@@ -15,7 +15,7 @@ module.exports = {
         .addField("Roundtrip took", (`${m.createdTimestamp - message.createdTimestamp}ms`), true)
         .addField("Hearthbeat", (`${Math.round(bot.ws.ping)}ms​`), true)
         .setColor('#00f1ff')
-        .setFooter("BOT By FrenzyQrunch")
+        .setTimestamp()
         return setTimeout(function(){ 
         m.edit("Sukses Mendapatkan Info !", aembed)
         }, 3000);
