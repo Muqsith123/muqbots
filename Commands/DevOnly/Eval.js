@@ -18,7 +18,7 @@ module.exports = {
             if (code.includes(`SECRET`) || code.includes(`TOKEN1`) || code.includes("process.env")) {
               evaled = "Sistem Menolak Untuk Menampilkan Hal Rahasia !";
             } else {
-              evaled = eval(code);
+              evaled = await eval(code);
             }
             if (typeof evaled !== "string") evaled = require("util").inspect(evaled, {depth: 0});
             
