@@ -8,7 +8,7 @@ module.exports = {
   ownerOnly: true,
   run: async(bot, message, args) => {
     let input = args.join(" ")
-
+    if(!input) return message.reply('Please Input The Command, **BAKA !**')
     let waiting = await message.channel.send('Please Wait...');
 
     process.exec(input, (error, stdout) => {

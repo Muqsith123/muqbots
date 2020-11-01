@@ -16,7 +16,7 @@ module.exports = async (bot, message) => {
     if(cmd.length == 0) return;
     let command = bot.commands.get(cmd) || bot.commands.get(bot.aliases.get(cmd));
     if(!command) return;
-    if(command.ownerOnly && message.author.id != settingan.owners) return message.reply('Only Owner Can Use This !')
+    if(command.ownerOnly && !settingan.owners.includes(message.author.id)) return message.reply('Only Owner Can Use This !')
     if(command.adminOnly && !message.member.hasPermission("ADMINISTRATOR")) return message.reply('You Need `Administrator` To Use This Command !')
     command.run(bot,message,args)
 }
