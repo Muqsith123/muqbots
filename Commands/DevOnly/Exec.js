@@ -19,7 +19,7 @@ module.exports = {
         {name: 'Input : ', value: '``\`'+input+'``\`', inline: false}
         );
       embed.addFields(
-        {name: 'Result : ', value: '``\`'+result.substring(0, 1024)+'``\`', inline: false}
+        {name: 'Result : ', value: '``\`'+result+'``\`', inline: false}
         )
       waiting.delete()
       message.channel.send(embed).catch(err => {
