@@ -8,7 +8,6 @@ const bot = new Discord.Client({
 const { config } = require('dotenv')
 const keepAlive = require('./server');
 
-keepAlive()
 const configjson = require('./config.json')
 const prefix = configjson.prefix;
 const owners = configjson.owners;
