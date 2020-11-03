@@ -9,11 +9,16 @@ module.exports = {
     run: async(bot, message, args) => {
         let query = args.join(" ")
         let hasil =  await axios.get(`https://api.tenor.com/v1/random?q=${query}&key=${key}&limit=1`).then(x => x.data)
-        let embed = new MessageEmbed()
+        
+        try { 
+         let embed = new MessageEmbed()
         .setTitle('Here Your GIF !')
         .setColor('RANDOM')
         .setImage(hasil.results[0].media[0].gif.url)
 
         message.channel.send(embed)
+        } catch(err) {
+          return message.channel.send(`Something Wen\'t Wrong : **${err}**\nPlease Using Another Keyword !`);  
+        }
     }
 }

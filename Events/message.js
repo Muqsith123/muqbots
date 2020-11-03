@@ -18,5 +18,9 @@ module.exports = async (bot, message) => {
     if(!command) return;
     if(command.ownerOnly && !settingan.owners.includes(message.author.id)) return message.reply('Only Owner Can Use This !')
     if(command.adminOnly && !message.member.hasPermission("ADMINISTRATOR")) return message.reply('You Need `Administrator` To Use This Command !')
-    command.run(bot,message,args)
+    try { 
+      command.run(bot,message,args) 
+    } catch(err) {
+      message.channel.send(`Error: ${err}`)
+    }
 }
