@@ -8,11 +8,12 @@ module.exports = {
     category: 'Fun',
     run: async(bot, message, args) => {
         let query = args.join(" ")
+        if(!query) return message.channel.send('Please Input The Query !')
         let hasil =  await axios.get(`https://api.tenor.com/v1/random?q=${query}&key=${key}&limit=1`).then(x => x.data)
         
         try { 
          let embed = new MessageEmbed()
-        .setTitle('Here Your GIF !')
+        .setTitle(`Result For : ${query}`)
         .setColor('RANDOM')
         .setImage(hasil.results[0].media[0].gif.url)
 

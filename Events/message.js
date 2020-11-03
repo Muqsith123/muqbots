@@ -21,6 +21,6 @@ module.exports = async (bot, message) => {
     try { 
       command.run(bot,message,args) 
     } catch(err) {
-      message.channel.send(`Error: ${err}`)
+      return message.channel.send(`Error: ${err}`)
     }
 }
