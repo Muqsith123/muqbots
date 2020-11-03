@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 const fs = require('fs')
 const ytdl = require('ytdl-core')
 const bot = new Discord.Client({
-    disableMentions: "everyone"
+    disableMentions: "everyone",
+    fetchAllMembers:true
 })
 const { config } = require('dotenv')
 const keepAlive = require('./server');

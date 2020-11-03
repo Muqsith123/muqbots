@@ -34,7 +34,6 @@
     "node-cron": "^2.0.3",
     "node-fetch": "^2.6.1",
     "node-superfetch": "^0.1.10",
-    "npm": "^7.0.7",
     "path": "^0.12.7",
     "puppeteer": "^5.3.1",
     "request": "^2.88.2",
