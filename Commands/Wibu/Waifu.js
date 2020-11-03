@@ -31,6 +31,7 @@ module.exports = {
         .setTitle('This Your Waifu !')
         .setImage(waifu)
         .setColor('#ff5fda')
+        .setFooter('Get Random Image ? Please Input Command Again !')
 
         message.channel.send(embed)
     }

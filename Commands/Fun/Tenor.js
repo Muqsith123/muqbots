@@ -1,0 +1,19 @@
+const axios = require('axios');
+const { MessageEmbed } = require('discord.js');
+const key = process.env.TENORKEY
+
+module.exports = {
+    name: 'tenor',
+    description: 'Search Random Tenor GIF',
+    category: 'Fun',
+    run: async(bot, message, args) => {
+        let query = args.join(" ")
+        let hasil =  await axios.get(`https://api.tenor.com/v1/random?q=${query}&key=${key}&limit=1`).then(x => x.data)
+        let embed = new MessageEmbed()
+        .setTitle('Here Your GIF !')
+        .setColor('RANDOM')
+        .setImage(hasil.results[0].media[0].gif.url)
+
+        message.channel.send(embed)
+    }
+}
