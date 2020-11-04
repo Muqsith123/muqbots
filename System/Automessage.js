@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 module.exports = async(bot, message) => {
     let komen = message.content.toLowerCase()
     if(message.author.bot) return;
-    if(komen.includes(`<@${bot.user.id}>`)) {
+    if(message.mentions.users.first() &&  message.mentions.users.first().id === bot.user.id) {
         let data = await csprefix.findOne({
             GuildID: message.guild.id,
         })

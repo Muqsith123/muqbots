@@ -23,7 +23,7 @@ module.exports = {
         else if(query === 'rem') waifu = await kagApi.waifu.rem()
         else if(query === 'bunnygirl') waifu = await kagApi.waifu.bunnygirl()
         else if(query === 'chika') waifu = await kagApi.waifu.chika()
-        else if(query === 'chika') waifu = await kagApi.waifu.hayasaka()
+        else if(query === 'hayasaka') waifu = await kagApi.waifu.hayasaka()
 
         else return wow();
         
