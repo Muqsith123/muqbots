@@ -14,6 +14,7 @@ module.exports = {
         try { 
          let embed = new MessageEmbed()
         .setTitle(`Result For : ${query}`)
+        .setURL(hasil.results[0].url)
         .setColor('RANDOM')
         .setImage(hasil.results[0].media[0].gif.url)
 
