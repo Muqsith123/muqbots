@@ -1,7 +1,7 @@
-const translate = require('@vitalets/google-translate-api')
+const translate = require('google-translate-api');
 const { MessageEmbed } = require('discord.js')
 
-const listbahasa = {
+var listbahasa = {
     'auto': 'Automatic',
     'af': 'Afrikaans',
     'sq': 'Albanian',
@@ -17,8 +17,8 @@ const listbahasa = {
     'ca': 'Catalan',
     'ceb': 'Cebuano',
     'ny': 'Chichewa',
-    'zh-CN': 'Chinese (Simplified)',
-    'zh-TW': 'Chinese (Traditional)',
+    'zh-cn': 'Chinese Simplified',
+    'zh-tw': 'Chinese Traditional',
     'co': 'Corsican',
     'hr': 'Croatian',
     'cs': 'Czech',
@@ -39,18 +39,17 @@ const listbahasa = {
     'ht': 'Haitian Creole',
     'ha': 'Hausa',
     'haw': 'Hawaiian',
-    'he': 'Hebrew',
     'iw': 'Hebrew',
     'hi': 'Hindi',
     'hmn': 'Hmong',
     'hu': 'Hungarian',
     'is': 'Icelandic',
     'ig': 'Igbo',
-    'id': 'Indonesia',
+    'id': 'Indonesian',
     'ga': 'Irish',
     'it': 'Italian',
-    'ja': 'Jepang',
-    'jw': 'Jawa',
+    'ja': 'Japanese',
+    'jw': 'Javanese',
     'kn': 'Kannada',
     'kk': 'Kazakh',
     'km': 'Khmer',
@@ -64,7 +63,7 @@ const listbahasa = {
     'lb': 'Luxembourgish',
     'mk': 'Macedonian',
     'mg': 'Malagasy',
-    'ms': 'Malaysia',
+    'ms': 'Malay',
     'ml': 'Malayalam',
     'mt': 'Maltese',
     'mi': 'Maori',
@@ -77,7 +76,7 @@ const listbahasa = {
     'fa': 'Persian',
     'pl': 'Polish',
     'pt': 'Portuguese',
-    'pa': 'Punjabi',
+    'ma': 'Punjabi',
     'ro': 'Romanian',
     'ru': 'Russian',
     'sm': 'Samoan',
@@ -117,21 +116,25 @@ module.exports = {
     aliases: ['tr'],
 	run: async(bot, message, args)=> {
         let bahasa = args[0]
-        let kata = args.join(" ").slice(bahasa.length);
-        
+        let kata = args.slice(1).join(" ")
+        if(!bahasa) return message.channel.send('Please Input The Language !')
+        if(!kata) return message.channel.send('Please Input The Text !')
 
         translate(kata, {to: bahasa}).then(res => {
-            let hasil = res.text
-            
+
             const embed = new MessageEmbed()
             .setColor('#00f1ff')
             .addFields(
-                { name: 'Dari :', value: `${kata}`, inline: false},
-                { name: `Di Terjemahakan Ke ${listbahasa[bahasa]} :`, value: `${hasil}`, inline: false}
+                { name: `From ${listbahasa[res.from.language.iso]}: `, value: `${kata}`, inline: false},
+                { name: `Translated To ${listbahasa[bahasa]} :`, value: `${res.text}`, inline: false}
             )
             message.channel.send(embed)           
-        }).catch(e => {
-            return message.channel.send('Bahasa Tidak Terdeteksi !')
+        }).catch(err => {
+            return message.channel.send([
+            `Something Wen\'t Wrong : **${err}**`,
+            'Please Input the Correct Language',
+            "Example: 'en'"
+        ]);
         });
 
     }

@@ -26,6 +26,7 @@
     "ffmpeg-static": "^4.2.7",
     "figlet": "^1.5.0",
     "google-play-scraper": "^8.0.2",
+    "google-translate-api": "^2.3.0",
     "lolis.life": "^4.0.0",
     "moment": "^2.29.0",
     "mongodb": "^3.6.2",

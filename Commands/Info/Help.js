@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const { prefixasli, owners } = require('../../config.json')
+const { prefix, owners } = require('../../config.json')
 const { readdirSync } = require('fs')
 const mongoose = require('mongoose')
 const csprefix = require('../../MongoDB/mongodb')
@@ -18,10 +18,10 @@ module.exports = {
             const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
             if(command) {
             let deskripsi = []
-            if(command.description) deskripsi.push('Deskripsi : ' + command.description)
-            if(command.category) deskripsi.push('Category : ' + command.category)
-            if(command.usage) deskripsi.push('Usage : ' + command.usage)
-            if(command.aliases) deskripsi.push('Aliases : ' + command.aliases)
+            if(command.description) deskripsi.push('Deskripsi : ' + command.description);
+            if(command.category) deskripsi.push('Category : ' + command.category);
+            if(command.usage) deskripsi.push('Usage : ' + command.usage);
+            if(command.aliases) deskripsi.push('Aliases : ' + command.aliases.join(", "));
             
             const odading = new MessageEmbed()
             .setTitle(command.name)
@@ -32,12 +32,12 @@ module.exports = {
                 return message.channel.send("Command Tidak Valid !")
             }
         }else {
-            let prefix
+            let nowprefix;
             let data = await csprefix.findOne({
                 GuildID: message.guild.id,
             })
-            if(data && data.Prefix) prefix = data.Prefix;
-            if (!data.Prefix || !data) prefix = prefixasli;
+            if(data && data.Prefix) nowprefix = data.Prefix;
+            if (!data || !data.Prefix) nowprefix = prefix;
 
             const banyakctr = bot.categories
             var i;
@@ -58,10 +58,10 @@ module.exports = {
             else if(a === 'Wibu') namakategori = ':ribbon:║ Weaboo';
             
             
-            let commandwew = readdirSync(`./Commands/${a}/`).join(", " + `${prefix}`)
+            let commandwew = readdirSync(`./Commands/${a}/`).join(", " + `${nowprefix}`)
             
             anjayani.addFields(
-                {name: namakategori, value: '`' + prefix + commandwew.replace(/.js/gi, "").toLowerCase() + '`', inline: true}
+                {name: namakategori, value: '`' + nowprefix + commandwew.replace(/.js/gi, "").toLowerCase() + '`', inline: true}
             )
             let duar = banyakctr.length - 1;
             if(i === duar) {

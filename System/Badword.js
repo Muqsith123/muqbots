@@ -10,23 +10,15 @@ module.exports = async (bot, message) => {
         GuildID: message.guild.id
     })
     if(!data || !data.badword) return;
-    if(data.badword === "true") blockbw = true;
-    else if(data.badword === "false") blockbw = false;
-
-    
-    let admin = [
-        '730010922369679440',
-        '738395119992176670',
-        '748073934745763922'
-    ]
-
-    admin.forEach(salahsatuadmin => {
-        if(!message.member.roles.cache.get(salahsatuadmin)) return blockbw = true;
-        if(message.member.roles.cache.get(salahsatuadmin)) return blockbw = false;
-    })
+    if(data && data.badword === true) blockbw = true;
+    else if(data && data.badword === false) blockbw = false;
 
     badword.forEach(salahsatubadword => {
         if(blockbw && message.content.toLowerCase().includes(salahsatubadword)) {
+            if(message.member.roles.cache.get('730010922369679440')) return;
+            else if(message.member.roles.cache.get('738395119992176670')) return;
+            else if(message.member.roles.cache.get('748073934745763922')) return;
+            
             message.delete()
 
             const embed = new MessageEmbed()

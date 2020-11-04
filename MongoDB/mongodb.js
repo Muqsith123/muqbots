@@ -5,7 +5,8 @@ const PrefixSchema = new mongoose.Schema({
         type: String
     },
     badword: {
-        type: String
+        type: Boolean,
+        default: false
     },
     GuildID: String
 });

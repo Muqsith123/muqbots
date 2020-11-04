@@ -1,4 +1,4 @@
-const prefixModel = require('../../MongoDB/mongodb');
+const PrefixSchema = require('../../MongoDB/mongodb');
 const mongoose = require('mongoose');
 
 module.exports = {
@@ -6,33 +6,28 @@ module.exports = {
     description: 'Mengatur Prefix Server !',
     adminOnly: true,
     run: async(bot, message, args) => {
-        const data = prefixModel.findOneAndRemove({
+        const data = await PrefixSchema.findOne({
             GuildID: message.guild.id
         })
 
         if(!args[0]) return message.reply('Masukkan Prefix Baru !');
         if(args[0].length > 3) return message.reply('Prefix Terlalu Panjang !')
 
+        const filter = { GuildID: message.guild.id }
+        const newprefix = { Prefix: args[0] }
         if (data) {
-            await prefixModel.findOneAndRemove({
-                GuildID: message.guild.id
+            await PrefixSchema.findOneAndUpdate(filter, newprefix, {
+                new: true
             })
             
             message.channel.send(`The new prefix is now **\`${args[0]}\`**`);
-    
-            let newData = new prefixModel({
-                Prefix: args[0],
-                GuildID: message.guild.id
-            })
-            newData.save();
         } else if (!data) {
             message.channel.send(`The new prefix is now **\`${args[0]}\`**`);
     
-            let newData = new prefixModel({
-                Prefix: args[0],
-                GuildID: message.guild.id
+            await PrefixSchema.create({
+                GuildID: message.guild.id,
+                Prefix: args[0]
             })
-            newData.save();
         }
     }
 }
