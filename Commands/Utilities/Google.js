@@ -25,7 +25,7 @@ module.exports = {
         .setFooter("Powered by Google")
 
         try{
-            embed.setImage(href.pagemap ? href.pagemap.cse_thumbnail[0].src : null)
+            embed.setThumbnail(href.pagemap ? href.pagemap.cse_thumbnail[0].src : null)
             return message.channel.send(embed);
         }catch(err) {
             return message.channel.send(embed);
