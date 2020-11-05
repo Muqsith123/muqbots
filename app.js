@@ -1,3 +1,15 @@
+const express = require('express');
+const server = express();
+
+server.all('/', (req, res)=>{
+    res.send('Your bot is alive!')
+})
+
+function keepAlive(){
+    server.listen(3000, ()=>{console.log("Server is Ready!")});
+}
+keepAlive()
+
 const Discord = require('discord.js');
 const fs = require('fs')
 const ytdl = require('ytdl-core')
@@ -6,8 +18,6 @@ const bot = new Discord.Client({
     fetchAllMembers:true
 })
 const { config } = require('dotenv')
-const keepAlive = require('./server');
-keepAlive()
 
 const configjson = require('./config.json')
 const prefix = configjson.prefix;
