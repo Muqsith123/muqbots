@@ -16,8 +16,11 @@ module.exports = {
     .then(res => res.json())
     .then(json => {
       let id = Math.floor(Math.random() * json.data.length)
+
+      let judul = json.data[id].title || query;
+
       let embed = new MessageEmbed()
-      .setTitle(json.data[id].title)
+      .setTitle(judul)
       .setImage(json.data[id].images[0].link)
       .setColor('RANDOM')
       .setURL(json.data[id].link)

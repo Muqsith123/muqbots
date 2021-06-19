@@ -1,5 +1,6 @@
-const translate = require('google-translate-api');
+const translate = require('@vitalets/google-translate-api');
 const { MessageEmbed } = require('discord.js')
+const tunnel = require('tunnel');
 
 var listbahasa = {
     'auto': 'Automatic',
